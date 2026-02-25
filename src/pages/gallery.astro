@@ -1,0 +1,110 @@
+---
+import Base from "~/layouts/Base.astro";
+import Header from "~/components/Header.astro";
+import Footer from "~/components/Footer.astro";
+
+const photos = [
+  { src: "/images/gallery/hollie-adams-67.jpg", label: "Hollie Adams — portrait (vertical)", dims: "1800×2241", note: "Strong portrait. Good for hero or about section." },
+  { src: "/images/gallery/hollie-adams-121.jpg", label: "Hollie Adams — speaking/event", dims: "2500×1765", note: "Currently used as hero image (the blue-heavy one)." },
+  { src: "/images/gallery/hollie-adams-80.jpg", label: "Hollie Adams — candid", dims: "2252×1668", note: "Relaxed, natural light." },
+  { src: "/images/gallery/headshot-us.jpg", label: "US headshot — formal", dims: "2500×1676", note: "Classic headshot. Good for press kit / Champion Kit." },
+  { src: "/images/gallery/stage-wide.jpg", label: "Stage — wide shot", dims: "2214×988", note: "Wide stage panorama. Good for full-width banner." },
+  { src: "/images/gallery/event-photo-1.jpg", label: "Event photo 1", dims: "2000×1334", note: "Conference/event setting." },
+  { src: "/images/gallery/event-photo-2.jpg", label: "Event photo 2", dims: "2200×1467", note: "Conference/event setting." },
+  { src: "/images/gallery/sitecore-event.jpg", label: "Sitecore event", dims: "2500×1672", note: "Event photo, upscaled." },
+  { src: "/images/gallery/trade-151-portrait.jpg", label: "Trade 151 — portrait", dims: "2500×1667", note: "Casual portrait (2014)." },
+  { src: "/images/gallery/trade-151-casual.jpg", label: "Trade 151 — casual", dims: "2500×1518", note: "Casual pose (2014)." },
+  { src: "/images/gallery/future-chatgpt.png", label: "Future of ChatGPT — event", dims: "1182×789", note: "Panel/event image." },
+  { src: "/images/gallery/ai-safety-panel.png", label: "AI Safety panel", dims: "1484×2020", note: "Panel discussion (vertical)." },
+  { src: "/images/gallery/misc-photo.png", label: "Misc photo", dims: "1201×675", note: "Source unknown." },
+];
+
+const videos = [
+  { id: "9rqfDAaLy8k", label: "The View from 2035 — Vinod Khosla × Azeem Azhar (Khosla Ventures, Sep 2025)", note: "FIRESIDE FORMAT. Khosla Ventures portfolio day. Excellent showcase of Azeem's fireside style." },
+  { id: "HzlsKrMO5M4", label: "Current hero video (keynote)", note: "Already on the site." },
+  { id: "T86wASn2_BQ", label: "Current how-it-works video", note: "Already on the site." },
+  { id: "KCwtb7qoSY0", label: "Inside Tech's Fight Against Climate Change — Vinod Khosla × Azeem (Oct 2023)", note: "Energy transition focus. Shows breadth beyond AI." },
+];
+---
+
+<Base title="Image & Video Gallery — INTERNAL" description="Internal gallery for selecting website assets. Not linked from navigation.">
+  <Header />
+  <main>
+    <section class="pt-32 pb-8">
+      <div class="container-prose">
+        <p class="label mb-4 text-red-500">INTERNAL — NOT LINKED FROM NAV</p>
+        <h1 class="text-display font-light mb-4">Photo & Video Gallery</h1>
+        <p class="text-subhead text-muted font-light">
+          All available assets from the Squarespace archive. Pick the ones you want on the site — tell me which to use where.
+        </p>
+      </div>
+    </section>
+
+    <section class="section border-t border-border">
+      <div class="container-page">
+        <p class="label mb-8">Photos (13 from Squarespace archive)</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {photos.map((photo, i) => (
+            <div class="space-y-3">
+              <div class="aspect-[4/3] overflow-hidden rounded-lg bg-gray-100">
+                <img
+                  src={photo.src}
+                  alt={photo.label}
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div>
+                <p class="text-small font-medium">#{i + 1} — {photo.label}</p>
+                <p class="text-caption text-muted">{photo.dims} · {photo.note}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section border-t border-border">
+      <div class="container-page">
+        <p class="label mb-8">Videos (YouTube)</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {videos.map((video, i) => (
+            <div class="space-y-3">
+              <div class="aspect-video rounded-lg overflow-hidden bg-gray-100">
+                <iframe
+                  src={`https://www.youtube.com/embed/${video.id}`}
+                  title={video.label}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  class="w-full h-full"
+                  loading="lazy"
+                />
+              </div>
+              <div>
+                <p class="text-small font-medium">#{i + 1} — {video.label}</p>
+                <p class="text-caption text-muted">{video.note}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section border-t border-border">
+      <div class="container-prose">
+        <p class="label mb-4">How to use this</p>
+        <div class="space-y-3 text-body text-muted">
+          <p>Tell me which photos and videos you want, and where:</p>
+          <ul class="list-disc pl-6 space-y-1">
+            <li><strong>Hero image</strong> — replaces the current blue-heavy #2</li>
+            <li><strong>How It Works</strong> — the "Before" section photo</li>
+            <li><strong>Video embeds</strong> — Khosla fireside is ready to add</li>
+            <li><strong>Press section</strong> — your team can send more assets</li>
+          </ul>
+          <p>Your team can also send additional photos/videos — I'll add them to the next build.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>

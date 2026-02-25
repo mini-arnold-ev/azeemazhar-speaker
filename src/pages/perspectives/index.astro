@@ -1,0 +1,52 @@
+---
+import Base from "~/layouts/Base.astro";
+import Header from "~/components/Header.astro";
+import Footer from "~/components/Footer.astro";
+import { getCollection } from "astro:content";
+
+const base = import.meta.env.BASE_URL;
+
+const essays = (await getCollection("perspectives")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<Base
+  title="Perspectives — Azeem Azhar"
+  description="Rated positions on AI economics, energy transitions, and exponential technology — the frameworks Azeem brings to boardrooms and investor sessions."
+>
+  <Header />
+
+  <main>
+    <section class="pt-32 pb-16 md:pt-40 md:pb-20">
+      <div class="container-prose">
+        <p class="label mb-6">Perspectives</p>
+        <h1 class="text-display font-light mb-6">Signature arguments.</h1>
+        <p class="text-subhead text-muted font-light">
+          Not a blog. These are curated positions — the frameworks and analyses that define Azeem's work with leadership teams worldwide.
+        </p>
+      </div>
+    </section>
+
+    {essays.map((essay) => (
+      <article class="section border-t border-border">
+        <div class="container-prose">
+          <p class="label mb-4">{essay.data.title}</p>
+          <h2 class="text-headline font-light mb-8">{essay.data.thesis}</h2>
+          <div class="space-y-5 text-body leading-relaxed">
+            {essay.body?.split("\n\n").filter((p: string) => p.trim() && !p.startsWith("---") && !p.startsWith("*")).slice(0, 2).map((paragraph: string) => (
+              <p>{paragraph}</p>
+            ))}
+          </div>
+          <div class="mt-8">
+            <a href={`${base}/perspectives/${essay.id}/`} class="link-subtle text-small">
+              Read the full argument
+            </a>
+          </div>
+        </div>
+      </article>
+    ))}
+  </main>
+
+  <Footer />
+</Base>

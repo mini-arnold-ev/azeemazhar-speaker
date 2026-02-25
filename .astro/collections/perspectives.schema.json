@@ -1,0 +1,33 @@
+{
+  "$ref": "#/definitions/perspectives",
+  "definitions": {
+    "perspectives": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "sector": {
+          "type": "string"
+        },
+        "thesis": {
+          "type": "string"
+        },
+        "order": {
+          "type": "number"
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "sector",
+        "thesis",
+        "order"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

@@ -1,0 +1,21 @@
+---
+const logos = [
+  "Goldman Sachs",
+  "JP Morgan",
+  "Morgan Stanley",
+  "Google",
+  "Microsoft",
+  "McKinsey",
+  "BMW",
+  "Harvard Business School",
+  "WEF",
+];
+---
+
+<div class="flex flex-wrap items-center justify-center gap-3">
+  {logos.map(name => (
+    <span class="px-4 py-2 border border-[#1e293b] text-[#64748b] text-xs tracking-wide font-medium rounded-sm">
+      {name}
+    </span>
+  ))}
+</div>

@@ -1,0 +1,97 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '~/layouts/Base.astro';
+import Header from '~/components/Header.astro';
+import Footer from '~/components/Footer.astro';
+import ChampionKit from '~/components/ChampionKit.astro';
+
+export async function getStaticPaths() {
+  const essays = await getCollection('perspectives');
+  return essays.map(entry => ({
+    params: { id: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const base = import.meta.env.BASE_URL;
+---
+
+<Base
+  title={`${entry.data.title} — Azeem Azhar`}
+  description={entry.data.thesis}
+>
+  <Header />
+
+  <main>
+    <section class="pt-32 pb-12 md:pt-40 md:pb-16">
+      <div class="container-prose">
+        <p class="label mb-4">{entry.data.sector}</p>
+        <h1 class="text-display font-light mb-6 leading-tight">{entry.data.thesis}</h1>
+        <p class="text-subhead text-muted font-light">{entry.data.title}</p>
+      </div>
+    </section>
+
+    <section class="border-t border-border pb-20">
+      <div class="container-prose">
+        <div class="prose-content mt-12 space-y-6 text-body leading-relaxed text-[#cbd5e1]">
+          <Content />
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight border-t border-border">
+      <div class="container-prose">
+        <div class="flex items-center justify-between">
+          <a href={`${base}/perspectives/`} class="link-subtle text-small">← All perspectives</a>
+          <a href={`${base}/contact/`} class="btn-primary">Begin a Conversation</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight border-t border-border">
+      <div class="container-prose">
+        <ChampionKit />
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  .prose-content :global(h2) {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #f1f5f9;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+  .prose-content :global(h3) {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #f1f5f9;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  .prose-content :global(p) {
+    margin-bottom: 1.25rem;
+  }
+  .prose-content :global(em) {
+    font-style: italic;
+    color: #cbd5e1;
+  }
+  .prose-content :global(strong) {
+    color: #f1f5f9;
+    font-weight: 500;
+  }
+  .prose-content :global(a) {
+    color: #94a3b8;
+    border-bottom: 1px solid #334155;
+  }
+  .prose-content :global(a:hover) {
+    color: #f1f5f9;
+  }
+</style>

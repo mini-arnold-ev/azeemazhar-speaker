@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+/* ─── Theme tokens ───────────────────────────────────────────────────── */
+@theme {
+  --color-ink:    #f1f5f9;
+  --color-muted:  #94a3b8;
+  --color-border: #1e293b;
+  --color-bg:     #0f172a;
+
+  --font-sans: 'Inter Variable', Inter, system-ui, sans-serif;
+
+  --text-display:  clamp(2rem, 5vw, 3.5rem);
+  --text-headline: clamp(1.5rem, 3vw, 2.25rem);
+  --text-subhead:  clamp(1.125rem, 2vw, 1.375rem);
+  --text-body:     1rem;
+  --text-small:    0.875rem;
+  --text-caption:  0.75rem;
+}
+
+/* ─── Base reset ─────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  font-family: var(--font-sans);
+  background-color: #0f172a;
+  color: #f1f5f9;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+body { margin: 0; }
+
+a { color: inherit; text-decoration: none; }
+
+img { max-width: 100%; display: block; }
+
+/* ─── Layout utilities ───────────────────────────────────────────────── */
+@layer utilities {
+  /* Page-width container (wider) */
+  .container-page {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .container-page { padding-inline: 2rem; }
+  }
+
+  /* Prose-width container (narrower, ~65ch) */
+  .container-prose {
+    width: 100%;
+    max-width: 52rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .container-prose { padding-inline: 2rem; }
+  }
+
+  /* Extra-wide for grids */
+  .max-w-page {
+    max-width: 80rem;
+  }
+
+  /* Section spacing */
+  .section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+  .section-tight {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  @media (min-width: 768px) {
+    .section       { padding-top: 6rem; padding-bottom: 6rem; }
+    .section-tight { padding-top: 4rem; padding-bottom: 4rem; }
+  }
+
+  /* ─── Typography ─────────────────────────────────────────────────── */
+  .text-display  { font-size: var(--text-display);  line-height: 1.1; letter-spacing: -0.02em; }
+  .text-headline { font-size: var(--text-headline); line-height: 1.2; letter-spacing: -0.015em; }
+  .text-subhead  { font-size: var(--text-subhead);  line-height: 1.4; }
+  .text-body     { font-size: var(--text-body);     line-height: 1.7; }
+  .text-small    { font-size: var(--text-small);    line-height: 1.5; }
+  .text-caption  { font-size: var(--text-caption);  line-height: 1.4; }
+
+  .text-ink   { color: #f1f5f9; }
+  .text-muted { color: #94a3b8; }
+
+  /* Eyebrow / section label */
+  .label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #64748b;
+  }
+
+  /* ─── Borders ────────────────────────────────────────────────────── */
+  .border-border   { border-color: #1e293b; }
+  .divide-border > * + * { border-top-color: #1e293b; }
+
+  /* ─── Buttons ────────────────────────────────────────────────────── */
+  .btn-primary {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background-color: #f1f5f9;
+    color: #0f172a;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.025em;
+    border-radius: 0.125rem;
+    transition: background-color 150ms, color 150ms;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary:hover {
+    background-color: #cbd5e1;
+  }
+
+  /* ─── Links ──────────────────────────────────────────────────────── */
+  .link-subtle {
+    color: #94a3b8;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 1px;
+    transition: color 150ms, border-color 150ms;
+  }
+  .link-subtle:hover {
+    color: #f1f5f9;
+    border-color: #64748b;
+  }
+}

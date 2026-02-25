@@ -1,0 +1,304 @@
+---
+import Base from "~/layouts/Base.astro";
+import Header from "~/components/Header.astro";
+import Footer from "~/components/Footer.astro";
+import LogoStrip from "~/components/LogoStrip.astro";
+import VideoEmbed from "~/components/VideoEmbed.astro";
+import ChampionKit from "~/components/ChampionKit.astro";
+import { getCollection } from "astro:content";
+
+const base = import.meta.env.BASE_URL;
+
+const perspectives = (await getCollection("perspectives")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const provocations = perspectives.map((p) => ({
+  sector: p.data.sector,
+  thesis: p.data.thesis,
+  href: `/perspectives/${p.id}/`,
+}));
+
+const outcomeStories = [
+  {
+    quote: "Azeem has a deeper understanding of how exponential technologies reshape business models than almost anyone I've encountered. He doesn't just describe the future — he gives you frameworks you can act on.",
+    attribution: "Daniel Ek",
+    role: "Founder and CEO, Spotify",
+  },
+  {
+    quote: "After Azeem's session with our leadership team, the strategic questions changed — we stopped asking 'should we invest in AI' and started asking 'where specifically does AI compress our cost structure.'",
+    attribution: "Paul Daugherty",
+    role: "CTO, Accenture",
+  },
+  {
+    quote: "Azeem delivers a comprehensive but lively take on the key issues informing what he calls the Exponential Age... Highly recommended!",
+    attribution: "Reid Hoffman",
+    role: "Co-founder of LinkedIn",
+  },
+  {
+    quote: "Azeem builds the case for exponential thinking through insightful examples of technologies that have made possible discontinuous leaps forward.",
+    attribution: "Tom Glocer",
+    role: "Former CEO of Thomson Reuters",
+  },
+  {
+    quote: "Azeem has a rare ability to connect insightful macro analysis with real-life examples of AI and its impact on our daily work. Our team really enjoyed the session and learned a ton!",
+    attribution: "Davor Hebel",
+    role: "Managing Partner, Europe, Eight Roads Ventures",
+  },
+  {
+    quote: "Azeem's material was spot-on for the audience and resonated well. Loads of positive feedback.",
+    attribution: "David Grunwald",
+    role: "Director of Innovation, NatWest",
+  },
+];
+
+const stats = [
+  { value: "26M+", label: "Articles read annually" },
+  { value: "286K", label: "Newsletter subscribers" },
+  { value: "HBS", label: "Executive Fellow, Harvard Business School" },
+  { value: "WEF", label: "Co-chair, Global Futures Council" },
+];
+
+const mediaLogos = [
+  { name: "Bloomberg", src: "/images/New_Bloomberg_Logo.png" },
+  { name: "Wall Street Journal", src: "/images/WSJ_Logo.svg.png" },
+  { name: "The Guardian", src: "/images/The_Guardian_2018.svg.png" },
+  { name: "Wired", src: "/images/Wired_logo.svg.png" },
+  { name: "The Times", src: "/images/The_Times_masthead.svg.png" },
+  { name: "Frankfurter Allgemeine", src: "/images/Frankfurter_Allgemeine_logo.svg.png" },
+];
+---
+
+<Base
+  title="Azeem Azhar — The Exponential Age"
+  description="Azeem Azhar advises boards, investment committees, and leadership teams on how AI and exponential technologies reshape capital deployment, competitive position, and firm strategy."
+>
+  <Header />
+
+  <main>
+    <!-- The Thesis -->
+    <section class="min-h-[85vh] flex items-center pt-20">
+      <div class="container-page">
+        <div class="py-16 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+          <div class="md:col-span-7">
+            <p class="label mb-8">The Brief</p>
+            <h1 class="text-display font-light leading-tight mb-8">
+              Every exponential technology follows a learning curve. AI is on the steepest one we've ever measured. I help the people deploying capital understand what that means.
+            </h1>
+            <p class="text-subhead text-muted font-light">
+              Founder of Exponential View · Author of <em>Exponential</em> (FT Best Book 2021) · Executive Fellow, Harvard Business School
+            </p>
+          </div>
+          <div class="md:col-span-5">
+            <img
+              src={`${base}/images/azeem-speaking-1.jpg`}
+              alt="Azeem Azhar speaking at a leadership event"
+              class="w-full rounded-lg shadow-lg object-cover aspect-[4/5]"
+              loading="eager"
+              decoding="async"
+              width="600"
+              height="750"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Argument -->
+    <section class="section border-t border-border">
+      <div class="container-prose">
+        <p class="label mb-8">The Argument</p>
+        <div class="space-y-5 text-body leading-relaxed">
+          <p>
+            A pragmatic optimist who has spent two decades building, investing in, and advising on exponential technologies.
+          </p>
+          <p>
+            We are in the early innings of the most significant repricing event since the internet. AI and adjacent exponential technologies — energy, biotech, robotics — are collapsing cost curves at rates that make traditional forecasting models unreliable. The firms and funds that understand this will generate outsized returns. Those that don't will misallocate capital at scale.
+          </p>
+          <p>
+            I don't just analyse exponential technologies — I invest in them, I've built companies with them, and I've spent a decade tracking the energy transition that powers them. When I brief a board on AI economics, I'm drawing on operator experience, not just research.
+          </p>
+          <p>
+            I don't do policy. I do deployment: where the money goes, why it compounds, and what the second-order effects look like for your portfolio, your sector, your firm.
+          </p>
+          <p>
+            My work is built for the room where allocation decisions get made.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Where This Matters -->
+    <section class="section border-t border-border">
+      <div class="container-page">
+        <div class="max-w-prose mx-auto mb-12 md:mb-16">
+          <p class="label mb-4">Where This Matters</p>
+          <h2 class="text-headline font-light">Five positions on where value migrates next</h2>
+        </div>
+        <div class="max-w-prose mx-auto space-y-0 divide-y divide-border">
+          {provocations.map((item) => (
+            <a href={item.href} class="block group py-8 first:pt-0 last:pb-0">
+              <p class="label mb-3">{item.sector}</p>
+              <p class="text-subhead font-light group-hover:text-muted transition-colors duration-200">
+                {item.thesis}
+              </p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- The Evidence: Logos -->
+    <section class="section-tight border-t border-border">
+      <div class="container-page">
+        <p class="label text-center mb-10">Trusted by leaders at</p>
+        <LogoStrip />
+        <p class="text-caption text-muted text-center mt-8 max-w-2xl mx-auto">
+          Plus: BMW, Coca-Cola, Renault, IKEA, Lego, BBC, BCG, PwC, Harvard Business School, University of Oxford, and 50+ other organisations.
+        </p>
+      </div>
+    </section>
+
+    <!-- The Evidence: Outcome Stories -->
+    <section class="section border-t border-border">
+      <div class="container-prose">
+        <p class="label mb-12">What They Say</p>
+        <div class="space-y-12">
+          {outcomeStories.map((story) => (
+            <blockquote class="border-l-2 border-ink/10 pl-6 md:pl-8">
+              <p class="text-subhead font-light leading-relaxed mb-4">
+                "{story.quote}"
+              </p>
+              <footer>
+                <p class="text-small font-medium">{story.attribution}</p>
+                <p class="text-small text-muted">{story.role}</p>
+              </footer>
+            </blockquote>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Persistence Signals -->
+    <section class="section-tight border-t border-border">
+      <div class="container-page">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center">
+          {stats.map((stat) => (
+            <div>
+              <p class="text-headline font-light mb-1">{stat.value}</p>
+              <p class="text-caption text-muted">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured In: Media Logos -->
+    <section class="section-tight border-t border-border">
+      <div class="container-page">
+        <p class="label text-center mb-8">Featured in</p>
+        <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-5 md:gap-x-14 opacity-40">
+          {mediaLogos.map((logo) => (
+            <img
+              src={logo.src}
+              alt={logo.name}
+              class="h-4 md:h-5 w-auto object-contain grayscale"
+              loading="lazy"
+              decoding="async"
+              width="120"
+              height="20"
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- The Book -->
+    <section class="section border-t border-border">
+      <div class="container-prose">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+          <div class="flex flex-col sm:flex-row gap-8 items-start">
+            <img
+              src={`${base}/images/book-cover.jpg`}
+              alt="Exponential by Azeem Azhar"
+              class="w-28 sm:w-32 flex-shrink-0"
+              loading="lazy"
+              decoding="async"
+              width="128"
+              height="192"
+            />
+            <div>
+              <p class="label mb-3">Financial Times Best Book of 2021</p>
+              <h2 class="text-headline font-light mb-4">Exponential</h2>
+              <p class="text-body text-muted mb-4">
+                The economic framework for why technology cost curves are compressing faster than markets can price — and what that means for firms deploying capital today.
+              </p>
+              <blockquote class="border-l border-border pl-4">
+                <p class="text-small text-muted italic">
+                  "The world is in the midst of [an exponential] transformation, argues Azeem Azhar..."
+                </p>
+                <footer class="mt-2">
+                  <p class="text-caption text-muted">The Economist</p>
+                </footer>
+              </blockquote>
+            </div>
+          </div>
+          <div class="space-y-6">
+            <p class="label mb-2">On the Exponential Age</p>
+            <blockquote class="border-l border-border pl-4">
+              <p class="text-small text-muted italic leading-relaxed">
+                "Azeem builds the case for exponential thinking through insightful examples of technologies that have made possible discontinuous leaps forward."
+              </p>
+              <footer class="mt-2">
+                <p class="text-caption font-medium">Tom Glocer</p>
+                <p class="text-caption text-muted">Former CEO, Thomson Reuters</p>
+              </footer>
+            </blockquote>
+            <blockquote class="border-l border-border pl-4">
+              <p class="text-small text-muted italic leading-relaxed">
+                "Azeem delivers a comprehensive but lively take on the key issues informing what he calls the Exponential Age... Highly recommended!"
+              </p>
+              <footer class="mt-2">
+                <p class="text-caption font-medium">Reid Hoffman</p>
+                <p class="text-caption text-muted">Co-founder of LinkedIn</p>
+              </footer>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video -->
+    <section class="section border-t border-border">
+      <div class="container-prose">
+        <p class="label mb-6">See for yourself</p>
+        <VideoEmbed id="HzlsKrMO5M4" title="Azeem Azhar keynote" />
+      </div>
+    </section>
+
+    <!-- Champion Kit -->
+    <section class="section-tight border-t border-border">
+      <div class="container-prose">
+        <ChampionKit />
+      </div>
+    </section>
+
+    <!-- The Close -->
+    <section class="section border-t border-border">
+      <div class="container-prose text-center">
+        <p class="text-display font-light mb-6">~25 engagements per year.</p>
+        <div class="space-y-4 mb-10 max-w-xl mx-auto">
+          <p class="text-subhead text-muted font-light">
+            I work best in small, high-stakes settings — a partner offsite, a board strategy day, a fireside with your most important clients. I also deliver keynotes when the room and the question warrant it.
+          </p>
+          <p class="text-body text-muted">
+            If you're thinking about how AI reshapes your sector's economics, I'd like to hear what you're seeing.
+          </p>
+        </div>
+        <a href="/contact/" class="btn-primary">Begin a Conversation</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>

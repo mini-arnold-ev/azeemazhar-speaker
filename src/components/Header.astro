@@ -1,0 +1,43 @@
+---
+const base = import.meta.env.BASE_URL;
+
+const navLinks = [
+  { href: `${base}/`,              label: "Home" },
+  { href: `${base}/how-it-works/`, label: "How It Works" },
+  { href: `${base}/perspectives/`, label: "Perspectives" },
+  { href: `${base}/contact/`,      label: "Contact" },
+];
+---
+
+<header class="fixed inset-x-0 top-0 z-50 bg-[#0a1628]/90 backdrop-blur border-b border-[#1e293b]">
+  <div class="container-page">
+    <nav class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href={`${base}/`} class="text-[#f1f5f9] font-medium text-sm tracking-wide hover:text-white transition-colors">
+        Azeem Azhar
+      </a>
+
+      <!-- Desktop nav -->
+      <ul class="hidden md:flex items-center gap-8 list-none m-0 p-0">
+        {navLinks.map(link => (
+          <li>
+            <a
+              href={link.href}
+              class="text-[#94a3b8] hover:text-[#f1f5f9] text-sm transition-colors duration-150"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Mobile: Contact CTA only -->
+      <a
+        href={`${base}/contact/`}
+        class="md:hidden text-[#94a3b8] hover:text-[#f1f5f9] text-sm transition-colors"
+      >
+        Contact
+      </a>
+    </nav>
+  </div>
+</header>

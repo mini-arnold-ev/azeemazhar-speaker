@@ -1,0 +1,37 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
+<footer class="border-t border-[#1e293b] py-10 mt-auto">
+  <div class="container-page">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-caption text-[#64748b]">
+        © 2026 Azeem Azhar. All rights reserved.
+      </p>
+      <nav class="flex items-center gap-6">
+        <a
+          href={`${base}/contact/`}
+          class="text-caption text-[#64748b] hover:text-[#94a3b8] transition-colors"
+        >
+          Contact
+        </a>
+        <span class="text-[#1e293b]">·</span>
+        <a
+          href={`${base}/privacy/`}
+          class="text-caption text-[#64748b] hover:text-[#94a3b8] transition-colors"
+        >
+          Privacy
+        </a>
+        <span class="text-[#1e293b]">·</span>
+        <a
+          href="https://www.exponentialview.co"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-caption text-[#64748b] hover:text-[#94a3b8] transition-colors"
+        >
+          Exponential View ↗
+        </a>
+      </nav>
+    </div>
+  </div>
+</footer>

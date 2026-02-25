@@ -1,0 +1,361 @@
+---
+import Base from "~/layouts/Base.astro";
+import Header from "~/components/Header.astro";
+import Footer from "~/components/Footer.astro";
+import VideoEmbed from "~/components/VideoEmbed.astro";
+import ChampionKit from "~/components/ChampionKit.astro";
+
+const base = import.meta.env.BASE_URL;
+
+const signatureTopics = [
+  {
+    title: "The AI Investment Thesis: Stampede or Bubble?",
+    description: "A rigorous look at AI valuations, capital flows, and the economics of foundation models. Where is real value being created — and where are investors paying for hype? Built for audiences who allocate capital and need signal, not noise.",
+    audience: "Best for: investor conferences, equity research events, LP meetings",
+    essays: ["/perspectives/boom-or-bubble/", "/perspectives/the-stampede/"],
+  },
+  {
+    title: "Capital Deployment in the Exponential Age",
+    description: "Technology cost curves are collapsing exponentially — in compute, energy, biology, and manufacturing. What does this mean for portfolio construction, sector allocation, and the next decade of returns? The framework from Exponential, applied to investment strategy.",
+    audience: "Best for: PE partner days, asset manager offsites, sovereign wealth briefings",
+    essays: ["/perspectives/from-exponential-to-infinite/"],
+  },
+  {
+    title: "The $100 Trillion Productivity Question",
+    description: "AI promises transformative productivity gains — but the economic evidence is complex. This session separates the macro reality from the vendor pitch, helping leaders understand where productivity gains will materialise, how fast, and what it means for their business.",
+    audience: "Best for: CEO leadership meetings, board strategy sessions, industry conferences",
+    essays: ["/perspectives/the-bottleneck-flip/", "/perspectives/the-great-rewrite/"],
+  },
+  {
+    title: "The AI Economics Briefing (for Boards)",
+    description: "A structured working session designed for boards and senior leadership teams. Covers the AI landscape your organisation faces, the competitive dynamics reshaping your sector, and the strategic choices that can't wait. Interactive, confidential, tailored to your industry.",
+    audience: "Best for: board workshops (8–30 people), CEO-sponsored strategy days",
+    essays: ["/perspectives/magnitudes-of-intelligence/", "/perspectives/ai-as-gpt/"],
+  },
+  {
+    title: "Custom: Your Industry's AI Inflection Point",
+    description: "Every sector has its own AI timeline. Azeem works with your team in advance to build a session around the specific opportunities, risks, and competitive dynamics your industry faces. Recent custom sessions have covered financial services, defence, healthcare, and energy.",
+    audience: "Best for: any audience that needs depth over generality",
+    essays: ["/perspectives/trillion-agent-economy/", "/perspectives/two-ai-worlds/"],
+  },
+];
+
+const formats = [
+  { name: "Keynote", duration: "45 min", description: "A focused, high-impact session for large audiences. Provocative thesis, supporting evidence, strategic implications. Includes audience Q&A." },
+  { name: "Deep Dive", duration: "90 min", description: "Extended exploration of a single theme with interactive discussion and real-time analysis. Ideal for leadership off-sites." },
+  { name: "Workshop", duration: "2–3 hours", description: "Hands-on session combining presentation with live AI demonstration. Theory-to-demo arc that leaves teams with frameworks AND first-hand experience." },
+  { name: "Fireside Chat", duration: "30–60 min", description: "Intimate format for 8-30 people. Works exceptionally well at board dinners, CEO roundtables, and private executive gatherings." },
+  { name: "Multi-Session", duration: "Custom", description: "A programme of engagements over weeks or months, building cumulative insight within your organisation." },
+];
+
+const segments = [
+  {
+    name: "Investors & Allocators",
+    description: "Azeem helps public markets investors, PE partners, and sovereign wealth teams build conviction on AI's impact on returns, valuations, and sector dynamics.",
+    format: "Fireside chat or investor briefing (20–1,000 attendees)",
+    clients: ["Bank of America", "Deutsche Bank", "UBS", "CVC", "Khosla Ventures", "Goldman Sachs"],
+  },
+  {
+    name: "Boards & C-Suites",
+    description: "For boards and CEO leadership teams grappling with the AI question — how fast to move, where to invest, what to stop doing. Azeem's sweet spot is the intimate 8–30 person working session.",
+    format: "Half-day board workshop or CEO leadership session",
+    clients: ["FTSE 100 boards", "Fortune 500 leadership teams", "PE portfolio companies"],
+  },
+  {
+    name: "Industry Leaders",
+    description: "Large enterprises navigating AI adoption — from workforce transformation to product strategy. Azeem grounds the hype in economics, helping leadership teams make confident decisions.",
+    format: "Keynote or leadership offsite (100–600 attendees)",
+    clients: ["Microsoft", "Google", "McKinsey", "BMW"],
+  },
+  {
+    name: "Knowledge Platforms",
+    description: "Premier conferences, executive education programmes, and media platforms where audiences expect rigour, not just inspiration. Azeem brings the analytical depth of an investor with the storytelling of a broadcaster.",
+    format: "Mainstage keynote or moderated fireside",
+    clients: ["Harvard Business School", "MIT", "World Economic Forum", "Davos", "MWC", "Stanford HAI", "BBC"],
+  },
+];
+
+const vignettes = [
+  {
+    label: "Private Equity · Partner Day",
+    text: "A leading global private equity firm invited Azeem to their annual partner review day — 100 partners, one afternoon dedicated to AI's impact on portfolio value creation. The session became a working framework their deal teams now use to evaluate AI exposure across sectors.",
+  },
+  {
+    label: "Sovereign Wealth · Portfolio Briefing",
+    text: "A Middle Eastern sovereign wealth fund assembled 20 portfolio managers for an intimate briefing on exponential technology trends reshaping their investment universe. The conversation moved from macro AI dynamics to specific sector allocation decisions within the first hour.",
+  },
+  {
+    label: "Investment Bank · Investor Conference",
+    text: "One of the world's largest investment banks booked Azeem as the headline speaker for their annual technology investor conference. In a fireside format with the bank's head of equity research, he helped hundreds of public markets investors build a sharper thesis on AI winners and losers.",
+  },
+];
+
+const rightFitYes = [
+  "An expert who speaks the language of investors, not just technologists",
+  "A fireside chat partner who can hold the room with Vinod Khosla or your CIO",
+  "A board-level AI briefing that's rigorous, confidential, and tailored",
+  "An opening keynote that gives your investors or clients genuine conviction",
+  "Economic analysis of AI, not product demos or technical deep-dives",
+];
+
+const rightFitNo = [
+  "Policy conferences or regulatory panel discussions",
+  "Generic 'future of AI' panels with five speakers and seven minutes each",
+  "Technical AI/ML audiences looking for architecture or implementation detail",
+  "Events primarily seeking a government or public-sector perspective",
+  "You're looking for a performance over depth",
+];
+
+const sectors = [
+  { name: "Finance & Asset Management", clients: "Goldman Sachs, JP Morgan, Morgan Stanley, UBS, Baillie Gifford, Nomura, Pictet, Royal London, SEB, Hayfin, CVC, Khosla Ventures" },
+  { name: "Technology", clients: "Google, Microsoft, Meta, Spotify, Salesforce, Oracle, Deutsche Telekom, Vodafone, Sky, Unity" },
+  { name: "Advisory & Consulting", clients: "McKinsey, Accenture, Deloitte, BCG, EY, PwC, Cap Gemini, Hogan Lovells, TCS" },
+  { name: "Enterprise", clients: "BMW, Coca-Cola, Procter & Gamble, Renault, IKEA, LEGO, MTR" },
+  { name: "Academia & Executive Education", clients: "Harvard Business School, Stanford, University of Oxford, University of Cambridge, London Business School" },
+];
+---
+
+<Base
+  title="How It Works — Azeem Azhar"
+  description="How Azeem Azhar works with leadership teams, boards, and investors: preparation process, session formats, and what makes a good fit."
+>
+  <Header />
+
+  <main>
+    <section class="pt-32 pb-16 md:pt-40 md:pb-20">
+      <div class="container-prose">
+        <p class="label mb-6">How It Works</p>
+        <h1 class="text-display font-light mb-6">The process.</h1>
+        <p class="text-subhead text-muted font-light">
+          Every engagement is different. Here's what to expect.
+        </p>
+      </div>
+    </section>
+
+    <!-- Before -->
+    <section class="section border-t border-border">
+      <div class="container-page">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+          <div class="md:col-span-7">
+            <p class="label mb-4">Before</p>
+            <h2 class="text-headline font-light mb-6">Understanding your context</h2>
+            <div class="space-y-5 text-body leading-relaxed">
+              <p>
+                We start with a 30-minute call to understand your audience, the strategic questions on the table, and what you want the room thinking about after.
+              </p>
+              <p>
+                Azeem then develops a tailored angle for your event. This may draw on one of his core themes — AI economics, exponential cost curves, energy transitions — but it will be shaped by your industry, your audience, and the specific decisions your leadership team is weighing.
+              </p>
+            </div>
+          </div>
+          <div class="md:col-span-5">
+            <img
+              src={`${base}/images/azeem-casual-1.jpg`}
+              alt="Azeem Azhar in conversation"
+              class="w-full rounded-lg object-cover aspect-[4/5]"
+              loading="lazy"
+              decoding="async"
+              width="480"
+              height="600"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Client Segments -->
+    <section class="section border-t border-border">
+      <div class="container-page">
+        <div class="max-w-prose mx-auto mb-10">
+          <p class="label mb-4">Who Azeem Works With</p>
+          <h2 class="text-headline font-light">Decision-makers deploying capital or setting strategy in the age of AI</h2>
+        </div>
+        <div class="max-w-page mx-auto px-6 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+          {segments.map((segment) => (
+            <div class="border border-border p-8">
+              <h3 class="text-body font-medium mb-3">{segment.name}</h3>
+              <p class="text-body text-muted mb-4">{segment.description}</p>
+              <p class="text-caption text-muted mb-4">
+                <span class="font-medium text-ink/70">Best format:</span> {segment.format}
+              </p>
+              <div class="flex flex-wrap gap-2">
+                {segment.clients.map((client) => (
+                  <span class="text-caption text-muted border border-border/50 px-2 py-0.5">{client}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Signature Topics -->
+    <section class="section border-t border-border">
+      <div class="container-prose">
+        <p class="label mb-4">Signature Topics</p>
+        <h2 class="text-headline font-light mb-4">Every session is tailored. These are starting points.</h2>
+        <p class="text-body text-muted mb-10">The conversations your investors, partners, and board members are already having.</p>
+        <div class="space-y-0 divide-y divide-border">
+          {signatureTopics.map((topic) => (
+            <div class="py-8 first:pt-0 last:pb-0">
+              <h3 class="text-body font-medium mb-3">{topic.title}</h3>
+              <p class="text-body text-muted mb-3">{topic.description}</p>
+              <p class="text-caption text-muted mb-3">{topic.audience}</p>
+              <div class="flex gap-3">
+                {topic.essays.map((href) => (
+                  <a href={href} class="link-subtle text-caption">Read the argument</a>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- The Session: Format Grid -->
+    <section class="section border-t border-border">
+      <div class="container-page">
+        <div class="max-w-prose mx-auto">
+          <p class="label mb-4">The Session</p>
+          <h2 class="text-headline font-light mb-10">Formats available</h2>
+        </div>
+        <div class="max-w-page mx-auto px-6 md:px-8">
+          <div class="hidden md:grid grid-cols-12 gap-4 pb-4 border-b border-border mb-0">
+            <div class="col-span-3">
+              <p class="label">Format</p>
+            </div>
+            <div class="col-span-2">
+              <p class="label">Duration</p>
+            </div>
+            <div class="col-span-7">
+              <p class="label">Description</p>
+            </div>
+          </div>
+          {formats.map((format) => (
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-4 py-6 border-b border-border/50">
+              <div class="md:col-span-3">
+                <p class="text-body font-medium">{format.name}</p>
+              </div>
+              <div class="md:col-span-2">
+                <p class="text-caption text-muted">{format.duration}</p>
+              </div>
+              <div class="md:col-span-7">
+                <p class="text-body text-muted">{format.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent Engagements -->
+    <section class="section border-t border-border">
+      <div class="container-page">
+        <div class="max-w-prose mx-auto mb-10">
+          <p class="label mb-4">Recent Engagements</p>
+          <h2 class="text-headline font-light">How it works in practice</h2>
+        </div>
+        <div class="max-w-page mx-auto px-6 md:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+          {vignettes.map((v) => (
+            <div class="border border-border p-8">
+              <p class="label mb-4">{v.label}</p>
+              <p class="text-body text-muted">{v.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Video -->
+    <section class="section border-t border-border">
+      <div class="container-prose">
+        <p class="label mb-6">In action</p>
+        <VideoEmbed id="T86wASn2_BQ" title="Azeem Azhar keynote session" />
+      </div>
+    </section>
+
+    <!-- After -->
+    <section class="section border-t border-border">
+      <div class="container-prose">
+        <p class="label mb-4">After</p>
+        <h2 class="text-headline font-light mb-6">The engagement doesn't end on stage</h2>
+        <div class="space-y-5 text-body leading-relaxed">
+          <p>
+            After the session: your team receives a concise briefing note — the core frameworks, the sector-specific data points, and three questions to stress-test your current strategy against. Designed to be discussed in your next executive meeting, not filed.
+          </p>
+          <p>
+            For workshop and multi-session formats, Azeem provides a written synthesis of the strategic themes and questions that emerged — a document your leadership team can use as a foundation for next steps.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Select Clients by Sector -->
+    <section class="section border-t border-border">
+      <div class="container-page">
+        <div class="max-w-prose mx-auto mb-10">
+          <p class="label mb-4">The Evidence</p>
+          <h2 class="text-headline font-light">Select clients across sectors</h2>
+        </div>
+        <div class="max-w-page mx-auto px-6 md:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-6">
+          {sectors.map((sector) => (
+            <div>
+              <p class="text-small font-medium mb-2">{sector.name}</p>
+              <p class="text-caption text-muted leading-relaxed">{sector.clients}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Is This the Right Fit? -->
+    <section class="section border-t border-border">
+      <div class="container-prose">
+        <p class="label mb-4">An honest question</p>
+        <h2 class="text-headline font-light mb-10">Is this the right fit?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div>
+            <p class="text-small font-medium mb-6">Azeem is ideal when you need</p>
+            <div class="space-y-4">
+              {rightFitYes.map((item) => (
+                <div class="flex items-start gap-4">
+                  <span class="text-body mt-0.5 flex-shrink-0 text-ink">+</span>
+                  <p class="text-body text-ink">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <p class="text-small font-medium text-muted mb-6">Probably not the best fit for</p>
+            <div class="space-y-4">
+              {rightFitNo.map((item) => (
+                <div class="flex items-start gap-4">
+                  <span class="text-body mt-0.5 flex-shrink-0 text-muted">&minus;</span>
+                  <p class="text-body text-muted">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Champion Kit -->
+    <section class="section-tight border-t border-border">
+      <div class="container-prose">
+        <ChampionKit />
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section border-t border-border">
+      <div class="container-prose text-center">
+        <p class="text-headline font-light mb-6">Sound like a fit?</p>
+        <p class="text-body text-muted mb-10">Azeem typically accepts ~25 engagements per year. Early conversations are encouraged.</p>
+        <a href="/contact/" class="btn-primary">Begin a Conversation</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>
