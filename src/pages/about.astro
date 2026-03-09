@@ -1,0 +1,153 @@
+---
+import Base from "~/layouts/Base.astro";
+import Header from "~/components/Header.astro";
+import Footer from "~/components/Footer.astro";
+
+const base = import.meta.env.BASE_URL;
+
+const mediaLogos = [
+  { name: "Bloomberg", src: "/images/New_Bloomberg_Logo.png" },
+  { name: "Wall Street Journal", src: "/images/WSJ_Logo.svg.png" },
+  { name: "The Guardian", src: "/images/The_Guardian_2018.svg.png" },
+  { name: "Wired", src: "/images/Wired_logo.svg.png" },
+  { name: "The Times", src: "/images/The_Times_masthead.svg.png" },
+  { name: "Frankfurter Allgemeine", src: "/images/Frankfurter_Allgemeine_logo.svg.png" },
+];
+---
+
+<Base
+  title="About Azeem Azhar"
+  description="Author of Exponential, founder of Exponential View, HBS Executive Fellow, and one of the most sought-after speakers on AI and exponential technologies."
+>
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section class="min-h-[50vh] flex items-center pt-20">
+      <div class="container-page">
+        <div class="py-16 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+          <div class="md:col-span-7">
+            <p class="label mb-8">About</p>
+            <h1 class="text-display font-light leading-tight mb-6">Azeem Azhar</h1>
+            <p class="text-subhead text-muted font-light">
+              AI strategist · Author · Investor · Keynote speaker
+            </p>
+          </div>
+          <div class="md:col-span-5">
+            <img
+              src={`${base}/images/azeem-speaking-1.jpg`}
+              alt="Azeem Azhar"
+              class="w-full rounded-lg shadow-lg object-cover aspect-[4/5]"
+              loading="eager"
+              decoding="async"
+              width="600"
+              height="750"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bio -->
+    <section class="section border-t border-border">
+      <div class="container-prose">
+        <div class="space-y-6 text-body leading-relaxed">
+          <p>
+            Azeem Azhar has spent two decades at the intersection of technology, business, and society. He started as a journalist — reporting on the earliest days of the commercial internet — before becoming a technology entrepreneur, building and leading startups across media, AI, and e-commerce. He is an active investor in companies working on AI, energy, and other exponential technologies.
+          </p>
+          <p>
+            In 2015, he founded <strong>Exponential View</strong>, now one of the world's most influential technology analysis platforms with 286,000 subscribers and over 26 million articles read annually. His weekly newsletter and podcast are read and listened to by senior leaders in technology, finance, policy, and industry worldwide.
+          </p>
+          <p>
+            His book <em>Exponential: How Accelerating Technology Is Leaving Us Behind and What to Do About It</em> was named a <strong>Financial Times Best Book of 2021</strong> and has been translated into 12 languages. It provides the economic and strategic framework that underpins his advisory and speaking work.
+          </p>
+          <p>
+            Azeem is an <strong>Executive Fellow at Harvard Business School</strong>, where he works on the economics of AI and exponential technologies. He co-chairs the <strong>World Economic Forum's Global Futures Council</strong> on the intersection of AI and economic strategy. He is a regular contributor to the BBC, Financial Times, Wired, and Bloomberg.
+          </p>
+          <p>
+            He speaks approximately 25 times per year — to boards, C-suites, investment committees, conference audiences, and executive education programmes. His work spans finance, technology, energy, healthcare, consumer goods, and professional services.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- In the Media -->
+    <section class="section-tight border-t border-border">
+      <div class="container-page">
+        <p class="label text-center mb-8">In the Media</p>
+        <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-5 md:gap-x-14 opacity-40">
+          {mediaLogos.map((logo) => (
+            <img
+              src={logo.src}
+              alt={logo.name}
+              class="h-4 md:h-5 w-auto object-contain grayscale"
+              loading="lazy"
+              decoding="async"
+              width="120"
+              height="20"
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- The Book -->
+    <section class="section border-t border-border">
+      <div class="container-prose">
+        <p class="label mb-8">The Book</p>
+        <div class="flex flex-col sm:flex-row gap-8 items-start">
+          <img
+            src={`${base}/images/book-cover.jpg`}
+            alt="Exponential by Azeem Azhar"
+            class="w-28 sm:w-32 flex-shrink-0"
+            loading="lazy"
+            decoding="async"
+            width="128"
+            height="192"
+          />
+          <div>
+            <p class="text-caption text-muted mb-2">Financial Times Best Book of 2021</p>
+            <h2 class="text-headline font-light mb-4">Exponential</h2>
+            <p class="text-body text-muted mb-4">
+              The economic framework for why technology cost curves are compressing faster than institutions can adapt — and what that means for business strategy, competitive position, and leadership.
+            </p>
+            <p class="text-body text-muted">
+              Translated into 12 languages. Praised by Reid Hoffman, Daniel Ek, Tom Glocer, and The Economist.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Downloads & Bureau -->
+    <section class="section border-t border-border">
+      <div class="container-prose">
+        <p class="label mb-8">For Event Organisers &amp; Bureaux</p>
+        <div class="space-y-6">
+          <p class="text-body text-muted">
+            Working with a speakers bureau? Everything you need to pitch Azeem to your client:
+          </p>
+          <ul class="space-y-3 text-body text-muted">
+            <li>• <strong>Speaker pack</strong> — biography, topics, logistics, and format options (contact us for PDF)</li>
+            <li>• <strong>Headshots</strong> — high-resolution images available on request</li>
+            <li>• <strong>Champion Kit</strong> — a 3-page briefing to help make the case internally</li>
+          </ul>
+          <p class="text-body text-muted">
+            For materials or to discuss availability, <a href={`${base}/contact/`} class="underline hover:text-[#f1f5f9] transition-colors">get in touch</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section border-t border-border">
+      <div class="container-prose text-center">
+        <p class="text-headline font-light mb-6">~25 engagements per year</p>
+        <p class="text-body text-muted mb-8">Early conversations are encouraged.</p>
+        <a href={`${base}/contact/`} class="btn-primary">Check Availability</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>

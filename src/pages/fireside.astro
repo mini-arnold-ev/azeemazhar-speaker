@@ -1,0 +1,173 @@
+---
+import Base from "~/layouts/Base.astro";
+import Header from "~/components/Header.astro";
+import Footer from "~/components/Footer.astro";
+
+const base = import.meta.env.BASE_URL;
+
+const contexts = [
+  {
+    title: "Board Dinner",
+    description: "The night before a major board decision. A moderated conversation with Azeem sets the intellectual context — what's real, what's hype, what peers are actually doing. 8–20 people.",
+    clients: "FTSE 100 boards, Fortune 500 chairs, PE portfolio company boards",
+  },
+  {
+    title: "CEO Roundtable",
+    description: "Peer CEOs across industries, convened to compare notes on AI strategy. Azeem moderates and contributes — equal parts facilitator and provocateur. 12–25 people.",
+    clients: "CEO networks, industry associations, leadership councils",
+  },
+  {
+    title: "Investor LP Gathering",
+    description: "For fund managers who want to offer LPs a substantive session on AI's impact on returns, not a pitch. An intimate conversation that earns trust through rigour. 15–40 people.",
+    clients: "PE firms, VC funds, sovereign wealth advisors",
+  },
+  {
+    title: "Executive Offsite",
+    description: "One session within a larger leadership programme. Azeem joins for 60–90 minutes to stress-test the leadership team's AI assumptions and sharpen their strategic framing. Up to 30 people.",
+    clients: "Fortune 500 leadership teams, consulting firm partner groups",
+  },
+];
+
+const clientSectors = [
+  { sector: "Finance & Investment", clients: ["Goldman Sachs", "JP Morgan", "UBS", "CVC", "Khosla Ventures", "Deutsche Bank", "Hayfin"] },
+  { sector: "Boards & Private Capital", clients: ["FTSE 100 boards", "PE portfolio companies", "Family offices", "Sovereign wealth advisors"] },
+  { sector: "Professional Services", clients: ["McKinsey", "BCG", "Deloitte", "EY", "PwC", "Accenture"] },
+  { sector: "Technology Leadership", clients: ["Microsoft", "Google", "Meta", "Salesforce", "Oracle"] },
+];
+---
+
+<Base
+  title="Fireside Chat — Azeem Azhar"
+  description="Azeem Azhar fireside chat format — intimate conversations for board dinners, CEO roundtables, and private gatherings. 8–30 people, 45–90 minutes."
+>
+  <Header />
+  <main>
+
+    <!-- Hero -->
+    <section class="min-h-[50vh] flex items-center pt-20">
+      <div class="container-page py-16 md:py-24">
+        <p class="label mb-6">Engagement Format</p>
+        <h1 class="text-display font-light leading-tight mb-6 max-w-3xl">
+          Fireside Chat
+        </h1>
+        <p class="text-subhead text-muted font-light max-w-2xl mb-8">
+          45–90 minutes. Intimate format for small groups. Works exceptionally well at board dinners, CEO roundtables, and private executive gatherings where real conversation matters more than performance.
+        </p>
+        <div class="flex gap-8 text-small text-muted border-t border-[#1e293b] pt-8 mt-8">
+          <div><span class="text-[#f1f5f9] font-medium">Duration</span><br/>45–90 min</div>
+          <div><span class="text-[#f1f5f9] font-medium">Audience</span><br/>8–30 people</div>
+          <div><span class="text-[#f1f5f9] font-medium">Format</span><br/>Moderated conversation</div>
+          <div><span class="text-[#f1f5f9] font-medium">Setting</span><br/>Private or semi-private</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fireside photo -->
+    <section class="border-t border-[#1e293b]">
+      <div class="container-page py-8">
+        <img
+          src={`${base}/images/fireside-vinod-khosla.png`}
+          alt="Azeem Azhar in fireside conversation with Vinod Khosla"
+          class="w-full max-h-[520px] object-cover object-top"
+        />
+        <p class="text-caption text-[#475569] mt-3">Azeem Azhar in conversation with Vinod Khosla, Khosla Ventures</p>
+      </div>
+    </section>
+
+    <!-- Why fireside -->
+    <section class="section border-t border-[#1e293b]">
+      <div class="container-page">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+          <div class="md:col-span-5">
+            <p class="label mb-6">Why Fireside</p>
+            <h2 class="text-headline font-light mb-6">The format where real questions get answered</h2>
+            <p class="text-body text-muted leading-relaxed">
+              In a keynote, Azeem delivers a prepared argument to a large room. In a fireside, the conversation goes where the room needs it to go.
+            </p>
+            <p class="text-body text-muted leading-relaxed mt-4">
+              For boards and senior executives grappling with AI strategy, this is usually the higher-value format. The questions are more specific, the discussion is frank, and the insights are directly applicable to your situation — not a generic audience's.
+            </p>
+            <p class="text-body text-muted leading-relaxed mt-4">
+              Azeem is a practising investor, board adviser, and technologist. He speaks the language of capital, governance, and strategy — not just AI research.
+            </p>
+          </div>
+          <div class="md:col-span-7 space-y-1 pt-2">
+            {[
+              "Pre-session call to understand your group's specific questions and AI maturity",
+              "A framing position from Azeem (15–20 min) to anchor the conversation",
+              "Moderated Q&A with your moderator or self-directed",
+              "Open discussion — questions go where the group needs them",
+              "Chatham House rules apply by default; everything stays in the room",
+            ].map((item, i) => (
+              <div class="flex gap-4 py-4 border-b border-[#1e293b]">
+                <span class="text-[#475569] text-caption font-medium w-6 flex-shrink-0 pt-1">{String(i + 1).padStart(2, "0")}</span>
+                <p class="text-body text-muted">{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Best contexts -->
+    <section class="section border-t border-[#1e293b]">
+      <div class="container-page">
+        <p class="label mb-10">Best Contexts</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {contexts.map(ctx => (
+            <div class="border border-[#1e293b] p-8">
+              <h3 class="text-subhead font-light mb-3">{ctx.title}</h3>
+              <p class="text-body text-muted mb-4">{ctx.description}</p>
+              <p class="text-small text-[#475569]">↳ {ctx.clients}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Clients -->
+    <section class="section border-t border-[#1e293b]">
+      <div class="container-page">
+        <p class="label mb-10">Select Clients by Sector</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-8">
+          {clientSectors.map(s => (
+            <div>
+              <p class="text-small font-medium text-[#f1f5f9] mb-3">{s.sector}</p>
+              <p class="text-small text-muted">{s.clients.join(" · ")}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Other formats -->
+    <section class="section border-t border-[#1e293b]">
+      <div class="container-page">
+        <p class="label mb-8">Other Formats</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            { name: "Keynote", slug: "keynote", desc: "45–60 min for 100–5,000 people. Mainstage or plenary." },
+            { name: "Workshop", slug: "workshop", desc: "2–3 hours hands-on. Live AI demos and team frameworks." },
+            { name: "Deep Dive", slug: "deep-dive", desc: "90 minutes, single theme, interactive. Leadership offsites." },
+          ].map(f => (
+            <a href={`${base}/${f.slug}/`} class="block border border-[#1e293b] p-6 hover:border-[#334155] transition-colors">
+              <p class="text-small font-medium text-[#f1f5f9] mb-2">{f.name}</p>
+              <p class="text-small text-muted">{f.desc}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section border-t border-[#1e293b]">
+      <div class="container-page text-center">
+        <h2 class="text-headline font-light mb-4">Arrange a fireside</h2>
+        <p class="text-body text-muted mb-8 max-w-xl mx-auto">Most fireside enquiries come through directly or via speakers bureaux. Typically 6–12 weeks lead time for scheduling.</p>
+        <a href={`${base}/contact/`} class="btn-primary">Check availability</a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Base>

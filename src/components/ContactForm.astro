@@ -50,6 +50,49 @@
   </div>
 
   <div>
+    <label for="event-type" class="label block mb-2">Event Type</label>
+    <select
+      id="event-type"
+      name="event_type"
+      class="w-full border-b border-border bg-transparent py-3 text-body text-ink outline-none transition-colors focus:border-ink"
+    >
+      <option value="" class="bg-[#0f172a]">Select type...</option>
+      <option value="conference-keynote" class="bg-[#0f172a]">Conference keynote</option>
+      <option value="board-csuite" class="bg-[#0f172a]">Board or C-suite session</option>
+      <option value="workshop" class="bg-[#0f172a]">Workshop</option>
+      <option value="executive-education" class="bg-[#0f172a]">Executive education / programme</option>
+      <option value="other" class="bg-[#0f172a]">Other</option>
+    </select>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <label for="audience-size" class="label block mb-2">Audience Size</label>
+      <select
+        id="audience-size"
+        name="audience_size"
+        class="w-full border-b border-border bg-transparent py-3 text-body text-ink outline-none transition-colors focus:border-ink"
+      >
+        <option value="" class="bg-[#0f172a]">Select size...</option>
+        <option value="under-30" class="bg-[#0f172a]">Under 30</option>
+        <option value="30-100" class="bg-[#0f172a]">30–100</option>
+        <option value="100-500" class="bg-[#0f172a]">100–500</option>
+        <option value="500-plus" class="bg-[#0f172a]">500+</option>
+      </select>
+    </div>
+    <div>
+      <label for="industry" class="label block mb-2">Industry / Sector</label>
+      <input
+        type="text"
+        id="industry"
+        name="industry"
+        class="w-full border-b border-border bg-transparent py-3 text-body text-ink outline-none transition-colors focus:border-ink placeholder:text-muted/50"
+        placeholder="e.g. Financial services, Healthcare"
+      />
+    </div>
+  </div>
+
+  <div>
     <label for="event-date" class="label block mb-2">Event Date</label>
     <input
       type="text"
@@ -70,6 +113,11 @@
       class="w-full border-b border-border bg-transparent py-3 text-body text-ink outline-none transition-colors focus:border-ink placeholder:text-muted/50 resize-none"
       placeholder="Brief description of your event and what you hope to achieve"
     ></textarea>
+  </div>
+
+  <div class="flex items-center gap-3">
+    <input type="checkbox" id="bureau" name="speakers_bureau" value="yes" class="w-4 h-4 accent-[#f1f5f9]" />
+    <label for="bureau" class="text-body text-muted cursor-pointer">I'm working with a speakers bureau</label>
   </div>
 
   <input type="hidden" name="_subject" value="New speaking enquiry from azeemazhar.com" />

@@ -50,6 +50,21 @@ const outcomeStories = [
     attribution: "David Grunwald",
     role: "Director of Innovation, NatWest",
   },
+  {
+    quote: "WOW. What a fantastic session at #4YFN with Azeem Azhar. Azeem spoke beautifully about the wonder of technology and how it gives us 'the ability to create a world.'",
+    attribution: "Julie Mahoney",
+    role: "CEO & Founder, See You Tomorrow",
+  },
+  {
+    quote: "The absolutely best state-of-play presentation of how AI agents will impact business that I have encountered. He anticipated issues around AI agents that have since surfaced across every sector — and makes the most complicated aspects of the GenAI revolution easily accessible to decision-makers at every level.",
+    attribution: "David Folkerts-Landau",
+    role: "Group Chief Economist & Global Head of Research, Deutsche Bank",
+  },
+  {
+    quote: "Across multiple workshops with Mubadala's technology team, Azeem materially elevated how we think about AI investments and risk. He doesn't just present the usual narratives — the hype, the productivity debates, the bubble speculation. Instead, he weaves together technology, macroeconomics, philosophy, history, and capital markets into a framework that helps navigate where we are in this AI supercycle. For a sovereign investor operating at our time horizons, that kind of synthetic thinking is rare and genuinely valuable.",
+    attribution: "Ibrahim Ajami",
+    role: "Head of Ventures, Mubadala",
+  },
 ];
 
 const stats = [
@@ -83,7 +98,7 @@ const mediaLogos = [
           <div class="md:col-span-7">
             <p class="label mb-8">The Brief</p>
             <h1 class="text-display font-light leading-tight mb-8">
-              Every exponential technology follows a learning curve. AI is on the steepest one we've ever measured. I help the people deploying capital understand what that means.
+              Keynote speaker &amp; strategist on AI, exponential technologies, and the forces reshaping business.
             </h1>
             <p class="text-subhead text-muted font-light">
               Founder of Exponential View · Author of <em>Exponential</em> (FT Best Book 2021) · Executive Fellow, Harvard Business School
@@ -113,17 +128,73 @@ const mediaLogos = [
             A pragmatic optimist who has spent two decades building, investing in, and advising on exponential technologies.
           </p>
           <p>
-            We are in the early innings of the most significant repricing event since the internet. AI and adjacent exponential technologies — energy, biotech, robotics — are collapsing cost curves at rates that make traditional forecasting models unreliable. The firms and funds that understand this will generate outsized returns. Those that don't will misallocate capital at scale.
+            AI and adjacent exponential technologies — energy, biotech, robotics — are collapsing cost curves at rates that make traditional forecasting unreliable. The organisations that understand this will move faster and more confidently. Those that don't will find their strategies built on yesterday's assumptions.
           </p>
           <p>
-            I don't just analyse exponential technologies — I invest in them, I've built companies with them, and I've spent a decade tracking the energy transition that powers them. When I brief a board on AI economics, I'm drawing on operator experience, not just research.
+            I don't just analyse exponential technologies — I invest in them, I've built companies with them, and I've spent a decade tracking the energy transition that powers them. When I brief a leadership team on AI economics, I'm drawing on operator experience, not just research.
           </p>
           <p>
-            I don't do policy. I do deployment: where the money goes, why it compounds, and what the second-order effects look like for your portfolio, your sector, your firm.
+            I work with boards, C-suites, and conference audiences — from intimate sessions of eight to keynotes for thousands. Every engagement is tailored. Hybrid and virtual delivery available.
           </p>
-          <p>
-            My work is built for the room where allocation decisions get made.
-          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- What I Do — Entry Paths -->
+    <section class="section border-t border-border">
+      <div class="container-page">
+        <div class="max-w-prose mx-auto mb-12">
+          <p class="label mb-4">What I Do</p>
+          <h2 class="text-headline font-light">Helping leaders make confident decisions in the age of AI</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <a href={`${base}/keynote/`} class="block group p-8 border border-border rounded-lg hover:border-[#475569] transition-colors">
+            <p class="label mb-3">For Conferences</p>
+            <p class="text-headline font-light mb-3 group-hover:text-muted transition-colors">Keynote</p>
+            <p class="text-body text-muted">45–60 minutes for audiences of 100 to 5,000. A provocative thesis, evidence, and strategic implications.</p>
+          </a>
+          <a href={`${base}/fireside/`} class="block group p-8 border border-border rounded-lg hover:border-[#475569] transition-colors">
+            <p class="label mb-3">For Boards &amp; Leadership</p>
+            <p class="text-headline font-light mb-3 group-hover:text-muted transition-colors">Fireside Chat</p>
+            <p class="text-body text-muted">45–90 minutes for groups of 8 to 100. The format where real questions get answered.</p>
+          </a>
+          <a href={`${base}/programme/`} class="block group p-8 border border-border rounded-lg hover:border-[#475569] transition-colors">
+            <p class="label mb-3">For Executive Education</p>
+            <p class="text-headline font-light mb-3 group-hover:text-muted transition-colors">Programme</p>
+            <p class="text-body text-muted">Multi-session engagements for business schools, corporate L&amp;D, and organisations that need depth over time.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topics Preview -->
+    <section class="section border-t border-border">
+      <div class="container-page">
+        <div class="max-w-prose mx-auto mb-12">
+          <p class="label mb-4">Signature Topics</p>
+          <h2 class="text-headline font-light">Every session is tailored. These are starting points.</h2>
+        </div>
+        <div class="max-w-prose mx-auto space-y-0 divide-y divide-border">
+          <div class="py-6">
+            <p class="text-subhead font-light mb-2">The AI Productivity Question</p>
+            <p class="text-body text-muted">How AI changes cost structures, workforce dynamics, and competitive position across industries.</p>
+          </div>
+          <div class="py-6">
+            <p class="text-subhead font-light mb-2">The Exponential Age</p>
+            <p class="text-body text-muted">Why technology cost curves are compressing faster than institutions can adapt — and what business leaders need to know.</p>
+          </div>
+          <div class="py-6">
+            <p class="text-subhead font-light mb-2">AI Strategy for Boards</p>
+            <p class="text-body text-muted">What leadership teams and boards need to decide now — governance, investment, and competitive risk.</p>
+          </div>
+          <div class="py-6">
+            <p class="text-subhead font-light mb-2">Energy, AI &amp; the Great Rewrite</p>
+            <p class="text-body text-muted">Three simultaneous transitions — in energy, intelligence, and biology — are reshaping every sector.</p>
+          </div>
+          <div class="py-6">
+            <p class="text-subhead font-light mb-2">Custom: Your Industry's AI Inflection Point</p>
+            <p class="text-body text-muted">Tailored to your sector's specific opportunities, risks, and competitive dynamics.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -289,10 +360,10 @@ const mediaLogos = [
         <p class="text-display font-light mb-6">~25 engagements per year.</p>
         <div class="space-y-4 mb-10 max-w-xl mx-auto">
           <p class="text-subhead text-muted font-light">
-            I work best in small, high-stakes settings — a partner offsite, a board strategy day, a fireside with your most important clients. I also deliver keynotes when the room and the question warrant it.
+            I work with boards, conferences, and organisations of all sizes — from intimate sessions with eight people to keynotes for thousands. Every engagement is tailored to your audience and your strategic questions.
           </p>
           <p class="text-body text-muted">
-            If you're thinking about how AI reshapes your sector's economics, I'd like to hear what you're seeing.
+            If you're thinking about how AI reshapes your sector, I'd like to hear what you're seeing.
           </p>
         </div>
         <a href="/contact/" class="btn-primary">Begin a Conversation</a>
@@ -302,3 +373,4 @@ const mediaLogos = [
 
   <Footer />
 </Base>
+

@@ -3,7 +3,13 @@ const base = import.meta.env.BASE_URL;
 
 const navLinks = [
   { href: `${base}/`,              label: "Home" },
-  { href: `${base}/how-it-works/`, label: "How It Works" },
+  { href: `${base}/about/`,        label: "About" },
+  { href: `${base}/how-it-works/`, label: "Engagements", children: [
+    { href: `${base}/keynote/`,    label: "Keynote" },
+    { href: `${base}/fireside/`,   label: "Fireside Chat" },
+    { href: `${base}/workshop/`,   label: "Workshop" },
+    { href: `${base}/programme/`,  label: "Programme" },
+  ]},
   { href: `${base}/perspectives/`, label: "Perspectives" },
   { href: `${base}/contact/`,      label: "Contact" },
 ];
@@ -20,24 +26,58 @@ const navLinks = [
       <!-- Desktop nav -->
       <ul class="hidden md:flex items-center gap-8 list-none m-0 p-0">
         {navLinks.map(link => (
-          <li>
+          <li class="relative group">
             <a
               href={link.href}
               class="text-[#94a3b8] hover:text-[#f1f5f9] text-sm transition-colors duration-150"
             >
               {link.label}
             </a>
+            {link.children && (
+              <ul class="absolute left-0 top-full mt-2 bg-[#0a1628] border border-[#1e293b] rounded-lg py-2 min-w-[180px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 list-none m-0 p-0 shadow-xl">
+                {link.children.map(child => (
+                  <li>
+                    <a href={child.href} class="block px-4 py-2 text-sm text-[#94a3b8] hover:text-[#f1f5f9] hover:bg-[#1e293b]/50 transition-colors">
+                      {child.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
           </li>
         ))}
+        <li>
+          <a href={`${base}/contact/`} class="inline-block px-4 py-1.5 text-sm font-medium text-[#0f172a] bg-[#f1f5f9] rounded hover:bg-white transition-colors">
+            Check Availability
+          </a>
+        </li>
       </ul>
 
-      <!-- Mobile: Contact CTA only -->
-      <a
-        href={`${base}/contact/`}
-        class="md:hidden text-[#94a3b8] hover:text-[#f1f5f9] text-sm transition-colors"
-      >
-        Contact
-      </a>
+      <!-- Mobile hamburger -->
+      <button id="mobile-menu-btn" class="md:hidden text-[#94a3b8] hover:text-[#f1f5f9] transition-colors" aria-label="Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
     </nav>
   </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-[#0a1628] border-t border-[#1e293b]">
+    <div class="container-page py-4 space-y-3">
+      {navLinks.map(link => (
+        <>
+          <a href={link.href} class="block text-[#94a3b8] hover:text-[#f1f5f9] text-sm py-1 transition-colors">{link.label}</a>
+          {link.children && link.children.map(child => (
+            <a href={child.href} class="block text-[#64748b] hover:text-[#f1f5f9] text-sm py-1 pl-4 transition-colors">{child.label}</a>
+          ))}
+        </>
+      ))}
+      <a href={`${base}/contact/`} class="inline-block mt-2 px-4 py-1.5 text-sm font-medium text-[#0f172a] bg-[#f1f5f9] rounded hover:bg-white transition-colors">Check Availability</a>
+    </div>
+  </div>
 </header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+</script>

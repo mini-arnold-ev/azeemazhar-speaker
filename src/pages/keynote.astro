@@ -1,0 +1,204 @@
+---
+import Base from "~/layouts/Base.astro";
+import Header from "~/components/Header.astro";
+import Footer from "~/components/Footer.astro";
+
+const base = import.meta.env.BASE_URL;
+
+const topics = [
+  {
+    title: "The AI Investment Thesis: Stampede or Bubble?",
+    description: "A rigorous look at AI valuations, capital flows, and the economics of foundation models. Where is real value being created — and where are investors paying for hype?",
+    audience: "Investor conferences, equity research events, LP meetings",
+  },
+  {
+    title: "How AI Changes Your Cost Structure",
+    description: "AI promises transformative productivity gains — but the evidence is complex. This session separates macro reality from vendor pitch, helping leaders understand where gains materialise and what it means for their business.",
+    audience: "CEO leadership meetings, board strategy sessions, industry conferences",
+  },
+  {
+    title: "The Exponential Age: What Business Leaders Need to Know",
+    description: "Technology cost curves in compute, energy, biology, and manufacturing are collapsing faster than institutions can adapt. The framework for understanding why — and what to do about it.",
+    audience: "Corporate leadership events, annual conferences, executive offsites",
+  },
+  {
+    title: "Energy, AI & the Great Rewrite",
+    description: "Three fundamental inputs to civilisation — energy, intelligence, and biology — have each crossed from extraction to engineering. Every institution built for scarcity is running yesterday's software.",
+    audience: "Energy conferences, sustainability summits, infrastructure investors",
+  },
+  {
+    title: "Custom: Your Industry's AI Inflection Point",
+    description: "Every sector has its own AI timeline. Azeem works with your team in advance to build a session around the specific opportunities, risks, and competitive dynamics your industry faces.",
+    audience: "Any audience that needs depth over generality",
+  },
+];
+
+const clientSectors = [
+  {
+    sector: "Finance & Asset Management",
+    clients: ["Baillie Gifford", "Goldman Sachs", "JP Morgan", "Morgan Stanley", "UBS", "Deutsche Bank", "Khosla Ventures", "Bank of America"],
+  },
+  {
+    sector: "Technology",
+    clients: ["Microsoft", "Google (Alphabet)", "Meta", "Spotify", "Oracle", "Salesforce", "Deutsche Telekom"],
+  },
+  {
+    sector: "Professional Services",
+    clients: ["McKinsey", "BCG", "Deloitte", "EY", "PwC", "Accenture", "Hogan Lovells"],
+  },
+  {
+    sector: "Enterprise & Consumer",
+    clients: ["BMW", "Coca-Cola", "P&G", "IKEA", "Lego", "Renault"],
+  },
+  {
+    sector: "Academia & Institutions",
+    clients: ["Harvard Business School", "MIT", "World Economic Forum", "Oxford University", "London Business School"],
+  },
+  {
+    sector: "Media & Conferences",
+    clients: ["BBC", "Wired", "MWC", "Davos (WEF)", "Stanford HAI", "ITV"],
+  },
+];
+---
+
+<Base
+  title="Keynote Speaking — Azeem Azhar"
+  description="Azeem Azhar keynote speaker on AI, exponential technology, and the future of business. 45–60 minute high-impact sessions for 100–5,000 attendees."
+>
+  <Header />
+  <main>
+
+    <!-- Hero -->
+    <section class="min-h-[50vh] flex items-center pt-20">
+      <div class="container-page py-16 md:py-24">
+        <p class="label mb-6">Engagement Format</p>
+        <h1 class="text-display font-light leading-tight mb-6 max-w-3xl">
+          Keynote
+        </h1>
+        <p class="text-subhead text-muted font-light max-w-2xl mb-8">
+          45–60 minutes. A focused, high-impact session for large audiences. Provocative thesis, evidence-backed argument, strategic implications. Ends with Q&A.
+        </p>
+        <div class="flex gap-8 text-small text-muted border-t border-[#1e293b] pt-8 mt-8">
+          <div><span class="text-[#f1f5f9] font-medium">Duration</span><br/>45–60 min + Q&A</div>
+          <div><span class="text-[#f1f5f9] font-medium">Audience</span><br/>100–5,000 attendees</div>
+          <div><span class="text-[#f1f5f9] font-medium">Format</span><br/>Mainstage or plenary</div>
+          <div><span class="text-[#f1f5f9] font-medium">Engagements/year</span><br/>~25</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MWC26 Keynote Video -->
+    <section class="border-t border-[#1e293b]">
+      <div class="container-page py-8">
+        <p class="label mb-4">Recent Keynote</p>
+        <div class="relative w-full" style="padding-bottom: 56.25%;">
+          <iframe
+            src="https://vixyvideo.com/p/557/sp/55700/embedIframeJs/uiconf_id/23455624/partner_id/557?iframeembed=true&playerId=kaltura_player&entry_id=0_d8y13jxc&flashvars[streamerType]=auto"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;"
+            allowfullscreen
+            allow="autoplay *; fullscreen *; encrypted-media *"
+            frameborder="0"
+            title="Azeem Azhar keynote at MWC26 Barcelona — Peering Into Culture's Crystal Ball"
+          ></iframe>
+        </div>
+        <p class="text-caption text-[#475569] mt-3">MWC26 Barcelona · Keynote: Peering Into Culture's Crystal Ball</p>
+      </div>
+    </section>
+
+    <!-- Topics -->
+    <section class="section border-t border-[#1e293b]">
+      <div class="container-page">
+        <p class="label mb-10">Signature Topics</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {topics.map(topic => (
+            <div class="border border-[#1e293b] p-8">
+              <h3 class="text-subhead font-light mb-3">{topic.title}</h3>
+              <p class="text-body text-muted mb-4">{topic.description}</p>
+              <p class="text-small text-[#475569]">↳ {topic.audience}</p>
+            </div>
+          ))}
+        </div>
+        <p class="text-small text-muted mt-8">All topics are tailored to your audience. Azeem does not deliver off-the-shelf talks. Hybrid and virtual delivery available.</p>
+      </div>
+    </section>
+
+    <!-- What to expect -->
+    <section class="section border-t border-[#1e293b]">
+      <div class="container-page">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+          <div class="md:col-span-5">
+            <p class="label mb-6">What to Expect</p>
+            <h2 class="text-headline font-light mb-6">Rigour over inspiration</h2>
+            <p class="text-body text-muted leading-relaxed">
+              Azeem's keynotes are built from primary research, not slides recycled from last year. Each engagement starts with a briefing call to understand your audience, their level of AI sophistication, and the specific questions they need answered.
+            </p>
+            <p class="text-body text-muted leading-relaxed mt-4">
+              The result is a session that moves a room — not because it's entertaining, but because it's true.
+            </p>
+          </div>
+          <div class="md:col-span-7 space-y-6">
+            {[
+              { step: "01", title: "Pre-event briefing", desc: "30-min call with your team to calibrate the session to your audience and their specific AI maturity." },
+              { step: "02", title: "Custom framing", desc: "Azeem adapts the thesis, examples, and level of technical depth to your industry and context." },
+              { step: "03", title: "The talk", desc: "45–60 minutes of substantive argument. No filler, no generic AI hype. A position, evidence, implications." },
+              { step: "04", title: "Q&A", desc: "15–30 minutes of open Q&A. Azeem's Q&A sessions typically run long — audiences come prepared." },
+            ].map(item => (
+              <div class="flex gap-6 border-b border-[#1e293b] pb-6">
+                <span class="text-caption text-[#475569] font-medium w-8 flex-shrink-0 pt-1">{item.step}</span>
+                <div>
+                  <p class="text-small font-medium text-[#f1f5f9] mb-1">{item.title}</p>
+                  <p class="text-small text-muted">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clients -->
+    <section class="section border-t border-[#1e293b]">
+      <div class="container-page">
+        <p class="label mb-10">Select Clients by Sector</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-8">
+          {clientSectors.map(s => (
+            <div>
+              <p class="text-small font-medium text-[#f1f5f9] mb-3">{s.sector}</p>
+              <p class="text-small text-muted">{s.clients.join(" · ")}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Other formats -->
+    <section class="section border-t border-[#1e293b]">
+      <div class="container-page">
+        <p class="label mb-8">Other Formats</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            { name: "Fireside Chat", slug: "fireside", desc: "Intimate format for 8–100 people. Board dinners, CEO roundtables, private gatherings." },
+            { name: "Workshop", slug: "workshop", desc: "2–3 hours hands-on. Live AI demos, team frameworks, executive education." },
+            { name: "Programme", slug: "programme", desc: "Multi-session engagements for exec ed, corporate L&D, and organisations needing depth." },
+          ].map(f => (
+            <a href={`${base}/${f.slug}/`} class="block border border-[#1e293b] p-6 hover:border-[#334155] transition-colors">
+              <p class="text-small font-medium text-[#f1f5f9] mb-2">{f.name}</p>
+              <p class="text-small text-muted">{f.desc}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section border-t border-[#1e293b]">
+      <div class="container-page text-center">
+        <h2 class="text-headline font-light mb-4">Book a keynote</h2>
+        <p class="text-body text-muted mb-8 max-w-xl mx-auto">~25 engagements per year. Enquiries via the contact form or directly through your speakers bureau.</p>
+        <a href={`${base}/contact/`} class="btn-primary">Check availability</a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Base>

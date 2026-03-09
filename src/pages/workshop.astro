@@ -1,0 +1,161 @@
+---
+import Base from "~/layouts/Base.astro";
+import Header from "~/components/Header.astro";
+import Footer from "~/components/Footer.astro";
+
+const base = import.meta.env.BASE_URL;
+
+const modules = [
+  {
+    title: "Where We Are (30 min)",
+    description: "A rigorous briefing on the current state of AI — what's real, what's hype, where the economic value is actually forming. Calibrates the room to a shared factual baseline before strategy discussion.",
+  },
+  {
+    title: "Live AI Demonstration (45 min)",
+    description: "Hands-on use of frontier AI tools in real-time. Participants see models reason, write, analyse, and fail — building genuine intuition rather than a second-hand view of AI capabilities.",
+  },
+  {
+    title: "Strategic Implications for Your Organisation (45 min)",
+    description: "Working session applying the AI analysis to your specific business context. Where are your competitive risks? Which functions transform first? What decisions can't wait?",
+  },
+  {
+    title: "Framework & Next Steps (30 min)",
+    description: "Participants leave with a shared mental model for evaluating AI decisions and a prioritised short list of actions. Azeem facilitates, your team generates the outputs.",
+  },
+];
+
+const clientSectors = [
+  { sector: "Corporate Leadership Teams", clients: ["FTSE 100 executive committees", "Fortune 500 C-suites", "PE portfolio companies", "BMW", "Coca-Cola", "P&G"] },
+  { sector: "Boards", clients: ["Board workshop format (8–20 people)", "Audit/Risk committee deep dives", "Board strategy days"] },
+  { sector: "Professional Services", clients: ["McKinsey", "BCG", "Deloitte", "EY", "PwC", "Accenture", "Capgemini"] },
+  { sector: "Executive Education", clients: ["Harvard Business School", "London Business School", "MIT Sloan", "Oxford Saïd", "INSEAD"] },
+];
+---
+
+<Base
+  title="Workshop — Azeem Azhar"
+  description="Azeem Azhar workshop format — 2–3 hour hands-on sessions combining AI briefing, live demonstration, and strategic working session for executive teams."
+>
+  <Header />
+  <main>
+
+    <!-- Hero -->
+    <section class="min-h-[50vh] flex items-center pt-20">
+      <div class="container-page py-16 md:py-24">
+        <p class="label mb-6">Engagement Format</p>
+        <h1 class="text-display font-light leading-tight mb-6 max-w-3xl">
+          Workshop
+        </h1>
+        <p class="text-subhead text-muted font-light max-w-2xl mb-8">
+          2–3 hours. Combines AI briefing, live demonstration, and strategic working session. Teams leave with genuine first-hand intuition — not a second-hand account of what AI can do.
+        </p>
+        <div class="flex gap-8 text-small text-muted border-t border-[#1e293b] pt-8 mt-8">
+          <div><span class="text-[#f1f5f9] font-medium">Duration</span><br/>2–3 hours</div>
+          <div><span class="text-[#f1f5f9] font-medium">Audience</span><br/>8–50 people</div>
+          <div><span class="text-[#f1f5f9] font-medium">Format</span><br/>Presentation + live demo + working session</div>
+          <div><span class="text-[#f1f5f9] font-medium">Output</span><br/>Strategic framework + action list</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The arc -->
+    <section class="section border-t border-[#1e293b]">
+      <div class="container-page">
+        <p class="label mb-10">Workshop Arc</p>
+        <div class="space-y-0">
+          {modules.map((mod, i) => (
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 py-8 border-b border-[#1e293b]">
+              <div class="md:col-span-1">
+                <span class="text-caption text-[#475569] font-medium">{String(i + 1).padStart(2, "0")}</span>
+              </div>
+              <div class="md:col-span-4">
+                <h3 class="text-small font-medium text-[#f1f5f9]">{mod.title}</h3>
+              </div>
+              <div class="md:col-span-7">
+                <p class="text-body text-muted">{mod.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Why this works -->
+    <section class="section border-t border-[#1e293b]">
+      <div class="container-page">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+          <div class="md:col-span-5">
+            <p class="label mb-6">Why It Works</p>
+            <h2 class="text-headline font-light mb-6">Seeing beats hearing</h2>
+            <p class="text-body text-muted leading-relaxed">
+              Most executive AI briefings are verbal — someone describes what AI can do. Azeem's workshops are different: participants interact with frontier models in real time, including seeing where they reason well and where they fail.
+            </p>
+            <p class="text-body text-muted leading-relaxed mt-4">
+              This firsthand experience changes the quality of the strategic conversation that follows. Teams stop debating whether AI is real and start discussing what to do about it.
+            </p>
+          </div>
+          <div class="md:col-span-7">
+            <div class="space-y-6">
+              {[
+                { label: "Pre-workshop", text: "Briefing call with your team lead. Azeem reviews your organisation's AI context, competitive landscape, and the specific decisions your leadership faces." },
+                { label: "Day of", text: "No slides until needed. Azeem opens with a tight briefing, moves immediately to live demonstration, then facilitates the working session." },
+                { label: "Output", text: "A shared strategic framework and a short prioritised action list — generated by your team, facilitated by Azeem." },
+                { label: "Follow-on", text: "Optional: Azeem reviews the action list 4–6 weeks later and provides a written perspective on progress." },
+              ].map(item => (
+                <div class="border-l-2 border-[#1e293b] pl-6">
+                  <p class="text-small font-medium text-[#f1f5f9] mb-1">{item.label}</p>
+                  <p class="text-small text-muted">{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clients -->
+    <section class="section border-t border-[#1e293b]">
+      <div class="container-page">
+        <p class="label mb-10">Best Suited For</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-8">
+          {clientSectors.map(s => (
+            <div>
+              <p class="text-small font-medium text-[#f1f5f9] mb-3">{s.sector}</p>
+              <p class="text-small text-muted">{s.clients.join(" · ")}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Other formats -->
+    <section class="section border-t border-[#1e293b]">
+      <div class="container-page">
+        <p class="label mb-8">Other Formats</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            { name: "Keynote", slug: "keynote", desc: "45–60 min for 100–5,000 people. Mainstage or plenary." },
+            { name: "Fireside Chat", slug: "fireside", desc: "Intimate format for 8–30 people. Board dinners, CEO roundtables." },
+            { name: "Deep Dive", slug: "deep-dive", desc: "90 minutes, single theme, interactive. Leadership offsites." },
+          ].map(f => (
+            <a href={`${base}/${f.slug}/`} class="block border border-[#1e293b] p-6 hover:border-[#334155] transition-colors">
+              <p class="text-small font-medium text-[#f1f5f9] mb-2">{f.name}</p>
+              <p class="text-small text-muted">{f.desc}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section border-t border-[#1e293b]">
+      <div class="container-page text-center">
+        <h2 class="text-headline font-light mb-4">Book a workshop</h2>
+        <p class="text-body text-muted mb-8 max-w-xl mx-auto">Workshops are typically booked 6–10 weeks in advance. Customisation starts with a 30-minute call.</p>
+        <a href={`${base}/contact/`} class="btn-primary">Check availability</a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Base>
